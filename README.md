@@ -2,6 +2,8 @@
 
 A bold, modern agency website showcasing AI-powered web development services. This is a demo site that demonstrates what Zane on Fire Digital can build for clients.
 
+**Live Demo:** [https://zaneonfire.vercel.app](https://zaneonfire.vercel.app)
+
 ## Features
 
 - **Modern Single-Page Design**: Bold, vibrant design with orange/red/yellow fire theme
