@@ -22,8 +22,8 @@ export default function Home() {
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center">
           {/* Logo */}
-          <div className="flex items-center justify-center mb-8">
-            <div className="text-6xl mr-3">🔥</div>
+          <div className="flex flex-col items-center justify-center mb-8">
+            <div className="text-6xl mb-4">🔥</div>
             <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
               Zane on Fire Digital
             </h1>
@@ -70,7 +70,7 @@ export default function Home() {
       <section className="py-20 px-6 bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            Why Choose <span className="text-orange-500">Zane on Fire?</span>
+            Why Choose<br /><span className="text-orange-500">Zane on Fire?</span>
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8">

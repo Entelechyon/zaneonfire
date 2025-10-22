@@ -85,9 +85,9 @@ I can show you exactly how we solve these problems (and probably grab you a free
   if (!isOpen) return null
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col">
+    <div className="fixed bottom-4 right-4 left-4 md:left-auto md:bottom-6 md:right-6 z-50 flex flex-col">
       {/* Chat Window */}
-      <div className="bg-gray-900 border-2 border-orange-500 rounded-2xl shadow-2xl w-96 h-[600px] flex flex-col overflow-hidden">
+      <div className="bg-gray-900 border-2 border-orange-500 rounded-2xl shadow-2xl w-full md:w-96 h-[600px] flex flex-col overflow-hidden">
         {/* Header */}
         <div className="bg-gradient-to-r from-orange-600 to-red-600 p-4 flex items-center justify-between">
           <div className="flex items-center">
