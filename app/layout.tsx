@@ -1,6 +1,6 @@
-import type { Metadata } from 'next'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-import './globals.css'
+import type { Metadata } from "next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import "./globals.css"
 
 export const metadata: Metadata = {
   title: 'Zane on Fire Digital | AI-Powered Websites That Convert 24/7',

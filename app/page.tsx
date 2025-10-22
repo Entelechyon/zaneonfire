@@ -22,8 +22,8 @@ export default function Home() {
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center">
           {/* Logo */}
-          <div className="flex flex-col items-center justify-center mb-8">
-            <div className="text-6xl mb-4">🔥</div>
+          <div className="flex flex-col md:flex-row items-center justify-center mb-8">
+            <div className="text-6xl mb-4 md:mb-0 md:mr-3">🔥</div>
             <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
               Zane on Fire Digital
             </h1>
