@@ -4,6 +4,27 @@ A bold, modern agency website showcasing AI-powered web development services. Th
 
 **Live Demo:** [https://zaneonfire.vercel.app](https://zaneonfire.vercel.app)
 
+## Demo Projects Portfolio
+
+This repository includes three complete demo websites showcasing different industry solutions:
+
+### 1. Zane on Fire Digital (This Site)
+- **Live:** [https://zaneonfire.vercel.app](https://zaneonfire.vercel.app)
+- **Type:** Agency Website
+- **Features:** Lead qualification chatbot, conversion-optimized design, portfolio showcase
+
+### 2. Bella Vista Italian Restaurant
+- **Live:** [https://bella-vista-chi.vercel.app](https://bella-vista-chi.vercel.app)
+- **Code:** [https://github.com/Entelechyon/bella-vista](https://github.com/Entelechyon/bella-vista)
+- **Type:** Restaurant Website
+- **Features:** AI-powered reservation chatbot, hospitality industry solutions, automated booking and customer service
+
+### 3. Sarah Mitchell Consulting
+- **Live:** [https://sarah-mitchell-consulting.vercel.app](https://sarah-mitchell-consulting.vercel.app)
+- **Code:** [https://github.com/Entelechyon/sarah-mitchell-consultant](https://github.com/Entelechyon/sarah-mitchell-consultant)
+- **Type:** B2B Consulting Website
+- **Features:** Intelligent lead qualification chatbot, automated client screening, appointment booking system
+
 ## Features
 
 - **Modern Single-Page Design**: Bold, vibrant design with orange/red/yellow fire theme

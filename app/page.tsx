@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import Chatbot from './components/Chatbot'
 
 export default function Home() {
@@ -293,49 +294,89 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Project 2 - Restaurant Demo */}
-            <div className="bg-gray-800/50 rounded-2xl overflow-hidden border border-gray-700 opacity-75">
-              <div className="bg-gradient-to-br from-gray-700 to-gray-800 h-48 flex items-center justify-center">
-                <div className="text-6xl">🍽️</div>
+            {/* Project 2 - Bella Vista Restaurant */}
+            <div className="bg-gray-800/50 rounded-2xl overflow-hidden border border-gray-700 hover:border-orange-500 transition-all hover:scale-105">
+              <div className="relative h-48 bg-gray-900">
+                <Image
+                  src="/bella-vista-screenshot.png"
+                  alt="Bella Vista Restaurant Website"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2">Restaurant Website</h3>
-                <p className="text-gray-500 mb-4 text-sm font-semibold">COMING SOON</p>
-                <p className="text-gray-400 mb-4 leading-relaxed">
-                  Full-featured restaurant site with menu management, online ordering,
-                  reservation system, and AI customer service.
+                <h3 className="text-2xl font-bold mb-2">Bella Vista Italian Restaurant</h3>
+                <p className="text-orange-500 mb-4 text-sm font-semibold">RESTAURANT WEBSITE</p>
+                <p className="text-gray-300 mb-4 leading-relaxed">
+                  Elegant restaurant website with AI-powered reservation chatbot. Demonstrates hospitality industry solutions with automated booking and customer service.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-gray-700 text-gray-400 rounded-full text-xs">Next.js</span>
-                  <span className="px-3 py-1 bg-gray-700 text-gray-400 rounded-full text-xs">Reservations</span>
-                  <span className="px-3 py-1 bg-gray-700 text-gray-400 rounded-full text-xs">AI Support</span>
+                  <span className="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs">Next.js</span>
+                  <span className="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs">React</span>
+                  <span className="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs">Anthropic API</span>
+                  <span className="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs">Tailwind CSS</span>
                 </div>
-                <p className="text-sm text-gray-500">
-                  <strong className="text-gray-400">Planned:</strong> Menu updates, table booking, allergen info via AI
-                </p>
+                <div className="flex gap-3">
+                  <a
+                    href="https://bella-vista-chi.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-2 text-center bg-gradient-to-r from-orange-500 to-red-600 rounded-lg font-bold hover:scale-105 transition-transform text-sm"
+                  >
+                    View Live
+                  </a>
+                  <a
+                    href="https://github.com/Entelechyon/bella-vista"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-2 text-center border border-orange-500 rounded-lg font-bold hover:bg-orange-500/10 transition-colors text-sm"
+                  >
+                    View Code
+                  </a>
+                </div>
               </div>
             </div>
 
-            {/* Project 3 - Consultant Demo */}
-            <div className="bg-gray-800/50 rounded-2xl overflow-hidden border border-gray-700 opacity-75">
-              <div className="bg-gradient-to-br from-gray-700 to-gray-800 h-48 flex items-center justify-center">
-                <div className="text-6xl">💼</div>
+            {/* Project 3 - Sarah Mitchell Consulting */}
+            <div className="bg-gray-800/50 rounded-2xl overflow-hidden border border-gray-700 hover:border-orange-500 transition-all hover:scale-105">
+              <div className="relative h-48 bg-gray-900">
+                <Image
+                  src="/sarah-mitchell-screenshot.png"
+                  alt="Sarah Mitchell Consulting Website"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2">Consultant Portfolio</h3>
-                <p className="text-gray-500 mb-4 text-sm font-semibold">COMING SOON</p>
-                <p className="text-gray-400 mb-4 leading-relaxed">
-                  Professional consultant website with portfolio showcase, client testimonials,
-                  and AI-powered discovery call booking.
+                <h3 className="text-2xl font-bold mb-2">Sarah Mitchell Consulting</h3>
+                <p className="text-orange-500 mb-4 text-sm font-semibold">B2B CONSULTING WEBSITE</p>
+                <p className="text-gray-300 mb-4 leading-relaxed">
+                  Professional services website with intelligent lead qualification chatbot. Showcases B2B solutions with automated client screening and appointment booking.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-gray-700 text-gray-400 rounded-full text-xs">Next.js</span>
-                  <span className="px-3 py-1 bg-gray-700 text-gray-400 rounded-full text-xs">Booking</span>
-                  <span className="px-3 py-1 bg-gray-700 text-gray-400 rounded-full text-xs">CRM</span>
+                  <span className="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs">Next.js</span>
+                  <span className="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs">React</span>
+                  <span className="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs">Anthropic API</span>
+                  <span className="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs">Tailwind CSS</span>
                 </div>
-                <p className="text-sm text-gray-500">
-                  <strong className="text-gray-400">Planned:</strong> Calendar sync, lead scoring, automated follow-ups
-                </p>
+                <div className="flex gap-3">
+                  <a
+                    href="https://sarah-mitchell-consulting.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-2 text-center bg-gradient-to-r from-orange-500 to-red-600 rounded-lg font-bold hover:scale-105 transition-transform text-sm"
+                  >
+                    View Live
+                  </a>
+                  <a
+                    href="https://github.com/Entelechyon/sarah-mitchell-consultant"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-2 text-center border border-orange-500 rounded-lg font-bold hover:bg-orange-500/10 transition-colors text-sm"
+                  >
+                    View Code
+                  </a>
+                </div>
               </div>
             </div>
           </div>
