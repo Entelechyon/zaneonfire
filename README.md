@@ -14,13 +14,13 @@ This repository includes three complete demo websites showcasing different indus
 - **Features:** Lead qualification chatbot, conversion-optimized design, portfolio showcase
 
 ### 2. Bella Vista Italian Restaurant
-- **Live:** [https://bella-vista-chi.vercel.app](https://bella-vista-chi.vercel.app)
+- **Live:** [https://bella-vista.xyz](https://bella-vista.xyz)
 - **Code:** [https://github.com/Entelechyon/bella-vista](https://github.com/Entelechyon/bella-vista)
 - **Type:** Restaurant Website
 - **Features:** AI-powered reservation chatbot, hospitality industry solutions, automated booking and customer service
 
 ### 3. Sarah Mitchell Consulting
-- **Live:** [https://sarah-mitchell-consulting.vercel.app](https://sarah-mitchell-consulting.vercel.app)
+- **Live:** [https://www.sarahmitchell.online](https://www.sarahmitchell.online)
 - **Code:** [https://github.com/Entelechyon/sarah-mitchell-consultant](https://github.com/Entelechyon/sarah-mitchell-consultant)
 - **Type:** B2B Consulting Website
 - **Features:** Intelligent lead qualification chatbot, automated client screening, appointment booking system
