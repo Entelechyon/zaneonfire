@@ -2,47 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --flame-orange: #ff6b35;
-  --flame-red: #f7931e;
-  --flame-yellow: #fdc500;
-  --dark-bg: #0a0a0a;
-  --dark-card: #151515;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom gradient animation */
-@keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
+@layer base {
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  50% {
-    background-position: 100% 50%;
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Screen reader only utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: initial;
+    margin: initial;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
   }
 }
 
-.gradient-animate {
-  background-size: 200% 200%;
-  animation: gradient-shift 8s ease infinite;
-}
+@layer utilities {
+  /* Custom gradient animation */
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
 
-/* Glow effect for CTAs */
-.glow-orange {
-  box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
-}
+  .gradient-animate {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
 
-.glow-orange:hover {
-  box-shadow: 0 0 30px rgba(255, 107, 53, 0.8);
+  /* Glow effect for CTAs */
+  .glow-orange {
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+  }
+
+  .glow-orange:hover {
+    box-shadow: 0 0 30px rgba(255, 107, 53, 0.8);
+  }
 }

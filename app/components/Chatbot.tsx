@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback, memo } from 'react'
 
 interface Message {
   role: 'user' | 'assistant'
   content: string
+  id: string
 }
 
 interface ChatbotProps {
@@ -15,6 +16,7 @@ interface ChatbotProps {
 export default function Chatbot({ isOpen, onClose }: ChatbotProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
+      id: 'welcome-msg',
       role: 'assistant',
       content: `🔥 Hey there! I'm Spark, Zane's AI assistant. I'm here 24/7 to help with questions about our web development and AI automation services.
 
@@ -31,35 +33,40 @@ I can show you exactly how we solve these problems (and probably grab you a free
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  const scrollToBottom = () => {
+  const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }
+  }, [])
 
   useEffect(() => {
     scrollToBottom()
-  }, [messages])
+  }, [messages, scrollToBottom])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!inputValue.trim() || isLoading) return
 
     const userMessage: Message = {
+      id: `user-${Date.now()}`,
       role: 'user',
       content: inputValue
     }
 
-    setMessages(prev => [...prev, userMessage])
+    const updatedMessages = [...messages, userMessage]
+    setMessages(updatedMessages)
     setInputValue('')
     setIsLoading(true)
 
     try {
+      // Only send recent conversation history (last 10 messages) to reduce payload
+      const recentMessages = updatedMessages.slice(-10)
+
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          messages: [...messages, userMessage]
+          messages: recentMessages.map(({ id, ...msg }) => msg)
         }),
       })
 
@@ -68,12 +75,14 @@ I can show you exactly how we solve these problems (and probably grab you a free
       const data = await response.json()
 
       setMessages(prev => [...prev, {
+        id: `assistant-${Date.now()}`,
         role: 'assistant',
         content: data.message
       }])
     } catch (error) {
       console.error('Error:', error)
       setMessages(prev => [...prev, {
+        id: `error-${Date.now()}`,
         role: 'assistant',
         content: 'Sorry, I encountered an error. Please try again or contact us directly.'
       }])
@@ -109,10 +118,10 @@ I can show you exactly how we solve these problems (and probably grab you a free
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-950">
-          {messages.map((message, index) => (
+        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-950" role="log" aria-live="polite" aria-label="Chat messages">
+          {messages.map((message) => (
             <div
-              key={index}
+              key={message.id}
               className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
@@ -148,8 +157,10 @@ I can show you exactly how we solve these problems (and probably grab you a free
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Type your message..."
-              className="flex-1 bg-gray-800 text-white border border-gray-700 rounded-full px-4 py-2 focus:outline-none focus:border-orange-500 transition-colors"
+              className="flex-1 bg-gray-800 text-white border border-gray-700 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
               disabled={isLoading}
+              aria-label="Chat message input"
+              autoComplete="off"
             />
             <button
               type="submit"

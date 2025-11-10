@@ -1,9 +1,44 @@
 import Anthropic from '@anthropic-ai/sdk'
 import { NextRequest, NextResponse } from 'next/server'
 
+// Validate API key exists
+if (!process.env.ANTHROPIC_API_KEY) {
+  console.error('ANTHROPIC_API_KEY is not set')
+}
+
 const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
+  apiKey: process.env.ANTHROPIC_API_KEY || '',
 })
+
+// Simple in-memory rate limiting (for production, use Redis or similar)
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>()
+
+function rateLimit(identifier: string, maxRequests = 20, windowMs = 60000): boolean {
+  const now = Date.now()
+  const record = rateLimitMap.get(identifier)
+
+  if (!record || now > record.resetTime) {
+    rateLimitMap.set(identifier, { count: 1, resetTime: now + windowMs })
+    return true
+  }
+
+  if (record.count >= maxRequests) {
+    return false
+  }
+
+  record.count++
+  return true
+}
+
+// Cleanup old entries periodically
+setInterval(() => {
+  const now = Date.now()
+  for (const [key, value] of rateLimitMap.entries()) {
+    if (now > value.resetTime) {
+      rateLimitMap.delete(key)
+    }
+  }
+}, 300000) // Clean up every 5 minutes
 
 const SYSTEM_PROMPT = `You are Spark, the AI assistant for Zane on Fire Digital - a modern web development agency specializing in AI-powered websites and chatbots.
 
@@ -80,6 +115,27 @@ Remember: You're not just answering questions - you're qualifying leads and book
 
 export async function POST(request: NextRequest) {
   try {
+    // Check API key
+    if (!process.env.ANTHROPIC_API_KEY) {
+      console.error('ANTHROPIC_API_KEY not configured')
+      return NextResponse.json(
+        { error: 'Service temporarily unavailable' },
+        { status: 503 }
+      )
+    }
+
+    // Rate limiting based on IP
+    const ip = request.headers.get('x-forwarded-for') ||
+               request.headers.get('x-real-ip') ||
+               'unknown'
+
+    if (!rateLimit(ip)) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again in a minute.' },
+        { status: 429 }
+      )
+    }
+
     const { messages } = await request.json()
 
     if (!messages || !Array.isArray(messages)) {
@@ -87,6 +143,30 @@ export async function POST(request: NextRequest) {
         { error: 'Messages array is required' },
         { status: 400 }
       )
+    }
+
+    // Validate message format and limit length
+    if (messages.length > 50) {
+      return NextResponse.json(
+        { error: 'Too many messages in conversation' },
+        { status: 400 }
+      )
+    }
+
+    // Validate individual messages
+    for (const msg of messages) {
+      if (!msg.content || typeof msg.content !== 'string') {
+        return NextResponse.json(
+          { error: 'Invalid message format' },
+          { status: 400 }
+        )
+      }
+      if (msg.content.length > 5000) {
+        return NextResponse.json(
+          { error: 'Message too long' },
+          { status: 400 }
+        )
+      }
     }
 
     // Convert messages to Anthropic format

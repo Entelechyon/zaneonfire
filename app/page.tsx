@@ -16,8 +16,71 @@ export default function Home() {
 
   return (
     <main className="bg-black text-white">
+      {/* Skip to main content for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-6 focus:py-3 focus:bg-orange-500 focus:text-white focus:rounded-lg"
+      >
+        Skip to main content
+      </a>
+
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ProfessionalService',
+            name: 'Zane on Fire Digital',
+            image: 'https://zaneonfire.com/bella-vista-screenshot.webp',
+            '@id': 'https://zaneonfire.com',
+            url: 'https://zaneonfire.com',
+            telephone: '',
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Melbourne',
+              addressRegion: 'VIC',
+              addressCountry: 'AU',
+            },
+            geo: {
+              '@type': 'GeoCoordinates',
+              latitude: -37.8136,
+              longitude: 144.9631,
+            },
+            openingHoursSpecification: {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: [
+                'Monday',
+                'Tuesday',
+                'Wednesday',
+                'Thursday',
+                'Friday',
+              ],
+              opens: '09:00',
+              closes: '17:00',
+            },
+            sameAs: [
+              'https://github.com/entelechyon',
+              'https://www.linkedin.com/in/zaneonfire/',
+            ],
+            priceRange: '$3,500 - $15,000+',
+            description:
+              'Melbourne-based web development agency building intelligent websites with AI automation that capture leads, book appointments, and convert visitors 24/7.',
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: '5',
+              reviewCount: '1',
+            },
+            founder: {
+              '@type': 'Person',
+              name: 'Zane Priddle',
+              url: 'https://zanepriddle.com',
+            },
+          }),
+        }}
+      />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="main-content" className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Hero section">
         {/* Animated gradient background */}
         <div className="absolute inset-0 gradient-animate bg-gradient-to-br from-orange-600 via-red-600 to-yellow-500 opacity-20"></div>
 
@@ -48,13 +111,15 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
               onClick={() => setIsChatOpen(true)}
-              className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 rounded-full font-bold text-lg hover:scale-105 transition-transform glow-orange"
+              className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 rounded-full font-bold text-lg hover:scale-105 transition-transform glow-orange focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-black"
+              aria-label="Start your project - Open chat"
             >
               Start Your Project
             </button>
             <button
               onClick={() => scrollToSection('projects')}
-              className="px-8 py-4 border-2 border-orange-500 rounded-full font-bold text-lg hover:bg-orange-500/10 transition-colors"
+              className="px-8 py-4 border-2 border-orange-500 rounded-full font-bold text-lg hover:bg-orange-500/10 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-black"
+              aria-label="View our work - Scroll to projects section"
             >
               View Our Work
             </button>
@@ -111,7 +176,7 @@ export default function Home() {
               <h3 className="text-2xl font-bold mb-4 text-orange-400">Future-Proof Technology</h3>
               <p className="text-gray-300 leading-relaxed">
                 Next.js, AI integration, mobile-first design, lightning-fast hosting. We build with tomorrow's
-                tech today, so you're leading while competitors are catching up.
+                tech today, so you're leading while competitors are <br />catching up.
               </p>
             </div>
           </div>
@@ -298,10 +363,12 @@ export default function Home() {
             <div className="bg-gray-800/50 rounded-2xl overflow-hidden border border-gray-700 hover:border-orange-500 transition-all hover:scale-105">
               <div className="relative h-48 bg-gray-900">
                 <Image
-                  src="/bella-vista-screenshot.png"
-                  alt="Bella Vista Restaurant Website"
+                  src="/bella-vista-screenshot.webp"
+                  alt="Bella Vista Restaurant Website - Elegant design with reservation chatbot"
                   fill
                   className="object-cover"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
               <div className="p-6">
@@ -341,10 +408,12 @@ export default function Home() {
             <div className="bg-gray-800/50 rounded-2xl overflow-hidden border border-gray-700 hover:border-orange-500 transition-all hover:scale-105">
               <div className="relative h-48 bg-gray-900">
                 <Image
-                  src="/sarah-mitchell-screenshot.png"
-                  alt="Sarah Mitchell Consulting Website"
+                  src="/sarah-mitchell-screenshot.webp"
+                  alt="Sarah Mitchell Consulting Website - Professional B2B design with lead qualification"
                   fill
                   className="object-cover"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
               <div className="p-6">
